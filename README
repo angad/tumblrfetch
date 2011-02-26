@@ -1,0 +1,7 @@
+My first hands-on with Google App Engine
+
+Input the name of the tumblr blog. for e.g. startupquote
+and enter the number of pages up to which you want the images to be extracted from.
+Click on get. 
+
+The next page shows you all the images extracted from the blog. Works only for PNG for now. Save the page and you will have all the images.
