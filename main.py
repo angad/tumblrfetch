@@ -28,9 +28,10 @@ class MainPage(webapp.RequestHandler):
                     <body>
                       <form action="/fetch" method="post">
                         <div>Name of Tumblr Blog: <input type ="text" name="url"/></div>
-                        <div>Get upto (pages): <input type = "text" name = "pages"/></div>
+                        <div>Get from (pages): <input type = "text" name = "start"/> to <input type = "text" name = "end"/> </div>
                         <div><input type="submit" value="Get"></div>
                       </form>
+                     angadsg 27th Feb 2011
                     </body>
                       </html>""")
 
@@ -38,13 +39,16 @@ class MainPage(webapp.RequestHandler):
 class fetch(webapp.RequestHandler):
     def post(self):
         page_count = 0
-        pages = int(self.request.get('pages'))
+        start_page = int(self.request.get('start'))
+        end_page = int(self.request.get('end'))
+        pages = end_page - start_page
         look_for = '<img src="'
 
         while (page_count!=pages):
-            url = 'http://' + self.request.get('url') + '.tumblr.com/page/' + str(page_count+1)
+            url = 'http://' + self.request.get('url') + '.tumblr.com/page/' + str(start_page)
             content = urlopen(url).read()
             page_count+=1
+            start_page+=1
             start = 1
             while (start != -1 ):
                 start = content.find(look_for)
